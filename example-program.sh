@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "this is test program. sleep for 10 seconds and exit"
+echo "this is test program. sleep for 2 seconds and exit"
 
-sleep 10
+sleep 2
 exit 0
