@@ -4,6 +4,7 @@ import scala.scalanative.build._
 
 val scala3Version = "3.4.2"
 val http4sVersion = "0.23.27"
+val catsEffectVersion = "3.5.4"
 
 usePipelining := true
 
@@ -36,12 +37,12 @@ lazy val daemon = crossProject(JVMPlatform)
       "com.lihaoyi" %% "os-lib" % "0.10.2",
       "com.outr" %% "scribe" % "3.13.0",
       "com.outr" %% "scribe-cats" % "3.13.0",
-      "org.typelevel" %% "cats-effect" % "3.5.4",
+      "org.typelevel" %% "cats-effect" % catsEffectVersion,
       "com.lihaoyi" %% "os-lib" % "0.10.2" % Test,
     ),
     libraryDependencies ++= Seq(
       "org.http4s" %% "http4s-dsl" % http4sVersion,
-      // we cannot use Scala Native because support for SN 0.5.x is not yet.
+      // we cannot use Scala Native because http4s support for SN 0.5.x is not yet.
       // os.spawn requires SN 0.5.x.
       "org.http4s" %% "http4s-ember-server" % http4sVersion,
       "com.github.jnr" % "jnr-unixsocket" % "0.38.22",
@@ -59,9 +60,10 @@ lazy val command = crossProject(JVMPlatform, NativePlatform)
     scalaVersion := scala3Version,
     libraryDependencies ++= Seq(
       "org.http4s" %%% "http4s-ember-client" % http4sVersion,
+      "com.armanbilge" %%% "epollcat" % "0.1.4",
       "com.disneystreaming.smithy4s" %%% "smithy4s-http4s" % smithy4sVersion.value,
       "com.outr" %%% "scribe" % "3.13.0",
       "com.outr" %%% "scribe-cats" % "3.13.0",
-      "org.typelevel" %%% "cats-effect" % "3.5.4",
+      "org.typelevel" %%% "cats-effect" % catsEffectVersion,
     ),
   )

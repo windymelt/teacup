@@ -6,7 +6,7 @@ import cats.effect.ExitCode
 import smithy4s.http4s.SimpleRestJsonBuilder
 import org.http4s.ember.client.EmberClientBuilder
 
-object Main extends IOApp {
+object Main extends epollcat.EpollApp {
   import org.http4s.syntax.literals.uri
 
   val client = for {
