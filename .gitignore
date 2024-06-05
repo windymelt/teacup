@@ -2,3 +2,8 @@
 .metals
 .scala-build
 target/
+.bloop
+.idea
+.vscode
+/build/
+metals.sbt
